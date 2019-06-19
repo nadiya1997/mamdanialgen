@@ -194,7 +194,7 @@ public class CFuzzyMamdani {
 //        }
     }
     
-    public void fuzzyfikasi_output_cuaca(){
+    public void fuzzifikasi_output_cuaca(){
         
         f_anggota_output = new double[51][4];
         
@@ -260,119 +260,116 @@ public class CFuzzyMamdani {
                 f_anggota_cuaca[i][j] = f_keanggotaan_cuaca[i][j];
             }
         }
-    
-//++++++++++++ Perulangan untuk setiap data pada 1 populasi++++++++++++++++++++++++            
-        for (int j = 0; j < f_anggota_cuaca.length; j++) {
-            m_keanggotaan = new double[daftar_rule.size()][daftar_rule.get(0).size()];
+        
+        System.out.println("f lengt : "+f_anggota_cuaca.length);
+//++++++++++++ Perulangan untuk setiap data pada 1 populasi++++++++++++++++++++++++ 
+        for (int i = 0; i < data_cuaca.size(); i++) {
+            for (int j = 0; j < f_anggota_cuaca.length; j++) {
+                m_keanggotaan = new double[daftar_rule.size()][daftar_rule.get(0).size()];
 
-            max = new double[f_anggota_cuaca.length][4];
+                max = new double[f_anggota_cuaca.length][4];
 
-//+++++++++++++++++ Perulangan untuk mencari nilai max setiap kategori output pada setiap data +++++++++++++                
-            for(int k = 0; k < max[j].length; k++){
-                max[j][k] = 0;
-            }
-            
-            System.out.println("rule kolom : "+daftar_rule.get(0).size());
-//++++++++++++++++++++++++++++ Perulangan untuk mendapatkan nilai m_keanggotaan setiap rule ++++++++++++++++++                
-            for (int k = 0; k < daftar_rule.size(); k++) {
-                min = 1000;
-                for (int l = 0; l < daftar_rule.get(k).size(); l++) {
-                    if(daftar_rule.get(k).get(l).equals("Cold")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][0];
-                    }
-                    else if(daftar_rule.get(k).get(l).equals("Warm")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][1]; 
-                    }
-                    else if(daftar_rule.get(k).get(l).equals("Hot")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][2];
-                    } 
+    //+++++++++++++++++ Perulangan untuk mencari nilai max setiap kategori output pada setiap data +++++++++++++                
+                for(int k = 0; k < max[j].length; k++){
+                    max[j][k] = 0;
+                }
 
-                    if(daftar_rule.get(k).get(l).equals("Dry")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][3];
-                    }
-                    else if(daftar_rule.get(k).get(l).equals("Wet")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][4];
-                    }
-                    else if(daftar_rule.get(k).get(l).equals("Moist")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][5];
-                    }
-
-                    if(daftar_rule.get(k).get(l).equals("Low")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][6];
-                    }
-                    else if(daftar_rule.get(k).get(l).equals("Medium")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][7];
-                    }
-                    else if(daftar_rule.get(k).get(l).equals("High")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][8];
-                    }
-
-                    if(daftar_rule.get(k).get(l).equals("Sedang")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][9];
-                    }
-                    else if(daftar_rule.get(k).get(l).equals("Kencang")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][10];
-                    }
-                    else if(daftar_rule.get(k).get(l).equals("Skencang")){
-                        m_keanggotaan[k][l] = f_anggota_cuaca[j][11];
-                    }
-
-
-//                    Untuk memperoleh nilai max pada setiap kategori         
-                    if(l == 4){
-                        m_keanggotaan[k][l] = min;
-                        if(daftar_rule.get(k).get(l).equals("Sunny")){
-                            if(max[j][0] < m_keanggotaan[k][l]){
-                                max[j][0] = m_keanggotaan[k][l];
-                            } 
+                
+    //++++++++++++++++++++++++++++ Perulangan untuk mendapatkan nilai m_keanggotaan setiap rule ++++++++++++++++++                
+                for (int k = 0; k < daftar_rule.size(); k++) {
+                    min = 1000;
+                    for (int l = 0; l < daftar_rule.get(k).size(); l++) {
+                        if(daftar_rule.get(k).get(l).equals("Cold")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][0];
                         }
-                        else if(daftar_rule.get(k).get(l).equals("Cloudy")){
-                            if(max[j][1] < m_keanggotaan[k][l]){
-                                max[j][1] = m_keanggotaan[k][l];
-                            } 
+                        else if(daftar_rule.get(k).get(l).equals("Warm")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][1]; 
                         }
-                        else if(daftar_rule.get(k).get(l).equals("Light Rain")){
-                            if(max[j][2] < m_keanggotaan[k][l]){
-                                max[j][2] = m_keanggotaan[k][l];
-                            } 
+                        else if(daftar_rule.get(k).get(l).equals("Hot")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][2];
+                        } 
+
+                        if(daftar_rule.get(k).get(l).equals("Dry")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][3];
                         }
-                        else if(daftar_rule.get(k).get(l).equals("Rain")){
-                            if(max[j][3] < m_keanggotaan[k][l]){
-                                max[j][3] = m_keanggotaan[k][l];
-                            } 
+                        else if(daftar_rule.get(k).get(l).equals("Wet")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][4];
                         }
-                    }
-                    
-                    else{
-                       if(min > m_keanggotaan[k][l]){
-                           min = m_keanggotaan[k][l];
-                       } 
-                    }
+                        else if(daftar_rule.get(k).get(l).equals("Moist")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][5];
+                        }
 
-                }        
+                        if(daftar_rule.get(k).get(l).equals("Low")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][6];
+                        }
+                        else if(daftar_rule.get(k).get(l).equals("Medium")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][7];
+                        }
+                        else if(daftar_rule.get(k).get(l).equals("High")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][8];
+                        }
 
-            }
-            
-//            for (int i = 0; i < daftar_rule.size(); i++) {
-//                System.out.println("Rule ke"+(i+1)+": ");
-//                for (int k = 0; k < daftar_rule.get(i).size(); k++) {
-//                    System.out.println(m_keanggotaan[i][k]);
-//                }
-//            }
-//=======================================================================================                            
-            f_anggota_output_baru = new double[f_anggota_output.length][f_anggota_output[0].length];
+                        if(daftar_rule.get(k).get(l).equals("Sedang")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][9];
+                        }
+                        else if(daftar_rule.get(k).get(l).equals("Kencang")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][10];
+                        }
+                        else if(daftar_rule.get(k).get(l).equals("Skencang")){
+                            m_keanggotaan[k][l] = f_anggota_cuaca[j][11];
+                        }
 
-            for (int k = 0; k < f_anggota_output.length; k++) {
-                for (int l = 0; l < f_anggota_output[k].length; l++) {
-                    if (f_anggota_output[k][l] > max[j][l]) {
-                        f_anggota_output_baru[k][l] = max[j][l];
-                    }
-                    else{
-                        f_anggota_output_baru[k][l] = f_anggota_output[k][l];
-                    }
+
+    //                    Untuk memperoleh nilai max pada setiap kategori         
+                        if(l == 4){
+                            m_keanggotaan[k][l] = min;
+                            if(daftar_rule.get(k).get(l).equals("Sunny")){
+                                if(max[j][0] < m_keanggotaan[k][l]){
+                                    max[j][0] = m_keanggotaan[k][l];
+                                } 
+                            }
+                            else if(daftar_rule.get(k).get(l).equals("Cloudy")){
+                                if(max[j][1] < m_keanggotaan[k][l]){
+                                    max[j][1] = m_keanggotaan[k][l];
+                                } 
+                            }
+                            else if(daftar_rule.get(k).get(l).equals("Light Rain")){
+                                if(max[j][2] < m_keanggotaan[k][l]){
+                                    max[j][2] = m_keanggotaan[k][l];
+                                } 
+                            }
+                            else if(daftar_rule.get(k).get(l).equals("Rain")){
+                                if(max[j][3] < m_keanggotaan[k][l]){
+                                    max[j][3] = m_keanggotaan[k][l];
+                                } 
+                            }
+                        }
+
+                        else{
+                           if(min > m_keanggotaan[k][l]){
+                               min = m_keanggotaan[k][l];
+                           } 
+                        }
+
+                    }        
 
                 }
-            }   
+
+    //=======================================================================================                            
+                f_anggota_output_baru = new double[f_anggota_output.length][f_anggota_output[0].length];
+                
+                for (int k = 0; k < f_anggota_output.length; k++) {
+                    for (int l = 0; l < f_anggota_output[k].length; l++) {
+                        if (f_anggota_output[k][l] > max[j][l]) {
+                            f_anggota_output_baru[k][l] = max[j][l];
+                        }
+                        else{
+                            f_anggota_output_baru[k][l] = f_anggota_output[k][l];
+                        }
+
+                    }
+                }   
+            }
         }
     }
     
@@ -404,6 +401,7 @@ public class CFuzzyMamdani {
             }             
 
             hasil_deffuzifikasi[i] = Double.valueOf(format.format(hasil_deffuzifikasi[i]/sum));
+            System.out.println("Defuzifikasi Data ke-"+(i+1)+" : "+hasil_deffuzifikasi[i]);
         }   
     }
     
@@ -460,7 +458,7 @@ public class CFuzzyMamdani {
                     kondisi_cuaca[i] = "Rain";
                 }
             }
-            else{
+            else {
                 kondisi_cuaca[i] = "Rain";
             }   
         }

@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -88,7 +88,7 @@ public class CInterfaceManager {
         fuzzy.init_cuaca(data_cuaca);
         fuzzy.do_fuzzifikasi();
         fuzzy.init_rule(daftar_rules);
-        fuzzy.fuzzyfikasi_output_cuaca();
+        fuzzy.fuzzifikasi_output_cuaca();
         fuzzy.do_inferensi();
         fuzzy.do_deffuzifikasi();
         fuzzy.do_prediksi();
@@ -100,7 +100,6 @@ public class CInterfaceManager {
     public void do_algenfuzzy(int jum_iterasi, int jum_populasi,double cr, double mr){
         double[][] f_anggota_populasi_mutasi;
         load_rules();
-        
         AM = new CHybridAlgen_Mamdani(jum_populasi);
         AM.BangkitPopulasi(jum_populasi);
         AM.init_cuaca(data_cuaca);
