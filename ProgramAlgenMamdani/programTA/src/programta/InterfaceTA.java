@@ -28,13 +28,19 @@ public class InterfaceTA extends javax.swing.JFrame {
     CInterfaceManager interface_manager;
     ArrayList<ECuaca> data_cuaca;
     String Data;
-
-    /**
-     * Creates new form InterfaceTA
-     */
+   
     public InterfaceTA() {
         initComponents();
         interface_manager = new CInterfaceManager();
+        
+        btn_loadfile.setEnabled(true);
+        ComboBox_metode.setEnabled(false);
+        TextFieldJumPopulasi.setEnabled(false);
+        TextFieldJumIterasi.setEnabled(false);
+        TextFieldCrossoverRate.setEnabled(false);
+        TextFieldMutationRate.setEnabled(false);
+        btn_hasilprediksi.setEnabled(false);
+        
     }
 
     /**
@@ -52,29 +58,28 @@ public class InterfaceTA extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TextField_folderPath = new javax.swing.JTextField();
         btn_loadfile = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        lbl_jumpopulasi = new javax.swing.JTextField();
-        lbl_jum_iterasi = new javax.swing.JTextField();
-        lbl_crossover_rate = new javax.swing.JTextField();
-        lbl_mutasi_rate = new javax.swing.JTextField();
+        TextFieldJumPopulasi = new javax.swing.JTextField();
+        TextFieldJumIterasi = new javax.swing.JTextField();
+        TextFieldCrossoverRate = new javax.swing.JTextField();
+        TextFieldMutationRate = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jPanel4 = new javax.swing.JPanel();
+        btn_hasilprediksi = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
         tbl_datacuaca = new javax.swing.JTable();
-        btn_hasilprediksi = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lbl_hasil_akurasi = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        Metode = new javax.swing.JComboBox<>();
+        ComboBox_metode = new javax.swing.JComboBox<>();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,11 +100,11 @@ public class InterfaceTA extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("PREDIKSI CUACA");
 
-        jLabel2.setText("Dataset                   ");
+        jLabel2.setText("Dataset");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TextField_folderPath.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TextField_folderPathActionPerformed(evt);
             }
         });
 
@@ -120,28 +125,28 @@ public class InterfaceTA extends javax.swing.JFrame {
 
         jLabel13.setText("mutation rate   ");
 
-        lbl_jumpopulasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        TextFieldJumPopulasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                lbl_jumpopulasiKeyTyped(evt);
+                TextFieldJumPopulasiKeyTyped(evt);
             }
         });
 
-        lbl_jum_iterasi.addKeyListener(new java.awt.event.KeyAdapter() {
+        TextFieldJumIterasi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                lbl_jum_iterasiKeyTyped(evt);
+                TextFieldJumIterasiKeyTyped(evt);
             }
         });
 
-        lbl_crossover_rate.setDoubleBuffered(true);
-        lbl_crossover_rate.addKeyListener(new java.awt.event.KeyAdapter() {
+        TextFieldCrossoverRate.setDoubleBuffered(true);
+        TextFieldCrossoverRate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                lbl_crossover_rateKeyTyped(evt);
+                TextFieldCrossoverRateKeyTyped(evt);
             }
         });
 
-        lbl_mutasi_rate.addKeyListener(new java.awt.event.KeyAdapter() {
+        TextFieldMutationRate.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                lbl_mutasi_rateKeyTyped(evt);
+                TextFieldMutationRateKeyTyped(evt);
             }
         });
 
@@ -155,19 +160,19 @@ public class InterfaceTA extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_mutasi_rate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TextFieldMutationRate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_crossover_rate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TextFieldCrossoverRate, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbl_jum_iterasi, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TextFieldJumIterasi, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(18, 18, 18)
-                        .addComponent(lbl_jumpopulasi, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextFieldJumPopulasi, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -176,24 +181,33 @@ public class InterfaceTA extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(lbl_jumpopulasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldJumPopulasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(lbl_jum_iterasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldJumIterasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(lbl_crossover_rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldCrossoverRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(lbl_mutasi_rate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(TextFieldMutationRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel3.setText("Tabel Hasil Prediksi Sistem");
+
+        btn_hasilprediksi.setText("Hasil Prediksi");
+        btn_hasilprediksi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hasilprediksiActionPerformed(evt);
+            }
+        });
+
+        jPanel5.setAutoscrolls(true);
 
         tbl_datacuaca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -207,7 +221,7 @@ public class InterfaceTA extends javax.swing.JFrame {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, true, true, true, true, true, true, true
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -220,35 +234,38 @@ public class InterfaceTA extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(tbl_datacuaca);
         if (tbl_datacuaca.getColumnModel().getColumnCount() > 0) {
+            tbl_datacuaca.getColumnModel().getColumn(0).setResizable(false);
             tbl_datacuaca.getColumnModel().getColumn(0).setPreferredWidth(30);
+            tbl_datacuaca.getColumnModel().getColumn(1).setResizable(false);
+            tbl_datacuaca.getColumnModel().getColumn(2).setResizable(false);
             tbl_datacuaca.getColumnModel().getColumn(2).setPreferredWidth(50);
+            tbl_datacuaca.getColumnModel().getColumn(3).setResizable(false);
             tbl_datacuaca.getColumnModel().getColumn(3).setPreferredWidth(70);
+            tbl_datacuaca.getColumnModel().getColumn(4).setResizable(false);
             tbl_datacuaca.getColumnModel().getColumn(4).setPreferredWidth(90);
+            tbl_datacuaca.getColumnModel().getColumn(5).setResizable(false);
             tbl_datacuaca.getColumnModel().getColumn(5).setPreferredWidth(90);
+            tbl_datacuaca.getColumnModel().getColumn(6).setResizable(false);
+            tbl_datacuaca.getColumnModel().getColumn(7).setResizable(false);
             tbl_datacuaca.getColumnModel().getColumn(7).setPreferredWidth(90);
         }
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 291, Short.MAX_VALUE))
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                .addContainerGap())
         );
-
-        jScrollPane5.setViewportView(jPanel4);
-
-        btn_hasilprediksi.setText("Hasil Prediksi");
-        btn_hasilprediksi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_hasilprediksiActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -257,34 +274,42 @@ public class InterfaceTA extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(0, 519, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_hasilprediksi)
-                .addGap(44, 44, 44))
+                .addGap(27, 27, 27))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(btn_hasilprediksi))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_hasilprediksi)
+                .addGap(18, 18, 18))
         );
 
         jLabel4.setText("Akurasi Sistem :");
+
+        lbl_hasil_akurasi.setText("-");
 
         jLabel6.setText("Parameter Algoritma Genetika");
 
         jLabel7.setText("Pilih Metode          ");
 
-        Metode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fuzzy Mamdani", "Algoritma Genetika + Mamdani" }));
+        ComboBox_metode.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fuzzy Mamdani", "Algoritma Genetika + Mamdani" }));
+        ComboBox_metode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboBox_metodeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -292,66 +317,65 @@ public class InterfaceTA extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(30, 30, 30)
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(33, 33, 33)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(Metode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(btn_loadfile)
-                                    .addGap(190, 190, 190))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(92, 92, 92)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(269, 269, 269)
+                        .addGap(30, 30, 30)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lbl_hasil_akurasi, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TextField_folderPath, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29)
+                                .addComponent(btn_loadfile))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(ComboBox_metode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel6)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(342, 342, 342)
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(43, 43, 43)
+                .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TextField_folderPath, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(btn_loadfile))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Metode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ComboBox_metode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(26, 26, 26)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(lbl_hasil_akurasi, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -360,12 +384,13 @@ public class InterfaceTA extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 858, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -378,12 +403,21 @@ public class InterfaceTA extends javax.swing.JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Excel FILES", "xlsx","Excel");
         chooser.setFileFilter(filter);
         chooser.setCurrentDirectory(new java.io.File("."));
+        chooser.setDialogTitle("Select File");
+        
         int result = chooser.showOpenDialog(this);
 
         if (result == JFileChooser.APPROVE_OPTION) {
+            String selectedFolder = String.valueOf(chooser.getSelectedFile());
+            TextField_folderPath.setText(selectedFolder);
+            System.out.println("getSelectedFile() : " + selectedFolder);
+            
             File selectedFile = chooser.getSelectedFile();
             path = selectedFile.getAbsolutePath();
-
+            
+            ComboBox_metode.setEnabled(true);
+            btn_hasilprediksi.setEnabled(true);
+            
             data_cuaca = new ArrayList();
 
             data_cuaca = interface_manager.load_file_excel(path);
@@ -406,39 +440,40 @@ public class InterfaceTA extends javax.swing.JFrame {
 
                 cuaca_model.addRow(data);
             }
+            
         } else {
             JOptionPane.showMessageDialog(this, "GAGAL MEMUAT DATA");
         }
     }//GEN-LAST:event_btn_loadfileActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TextField_folderPathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextField_folderPathActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TextField_folderPathActionPerformed
+    
 
-
-    private void lbl_jumpopulasiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_jumpopulasiKeyTyped
-        // TODO add your handling code here:
-        char enter = evt.getKeyChar();
-        if (!(Character.isDigit(enter))) {
-            evt.consume();
-        }
-        if (lbl_jumpopulasi.getText().length() >= 2) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_lbl_jumpopulasiKeyTyped
-
-    private void lbl_jum_iterasiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_jum_iterasiKeyTyped
+    private void TextFieldJumPopulasiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldJumPopulasiKeyTyped
         // TODO add your handling code here:
         char enter = evt.getKeyChar();
         if (!(Character.isDigit(enter))) {
             evt.consume();
         }
-        if (lbl_jum_iterasi.getText().length() >= 2) {
+        if (TextFieldJumPopulasi.getText().length() >= 2) {
             evt.consume();
         }
-    }//GEN-LAST:event_lbl_jum_iterasiKeyTyped
+    }//GEN-LAST:event_TextFieldJumPopulasiKeyTyped
 
-    private void lbl_crossover_rateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_crossover_rateKeyTyped
+    private void TextFieldJumIterasiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldJumIterasiKeyTyped
+        // TODO add your handling code here:
+        char enter = evt.getKeyChar();
+        if (!(Character.isDigit(enter))) {
+            evt.consume();
+        }
+        if (TextFieldJumIterasi.getText().length() >= 2) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_TextFieldJumIterasiKeyTyped
+
+    private void TextFieldCrossoverRateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldCrossoverRateKeyTyped
         // TODO add your handling code here:
 //        char c = evt.getKeyChar();
 //        
@@ -460,27 +495,21 @@ public class InterfaceTA extends javax.swing.JFrame {
 //                }
 //            }
 //        }
-    }//GEN-LAST:event_lbl_crossover_rateKeyTyped
+    }//GEN-LAST:event_TextFieldCrossoverRateKeyTyped
 
-    private void lbl_mutasi_rateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_mutasi_rateKeyTyped
+    private void TextFieldMutationRateKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextFieldMutationRateKeyTyped
         // TODO add your handling code here:
 //        char enter = evt.getKeyChar();
 //        if (!(Character.isDigit(enter))) {
 //            evt.consume();
 //        }
-//        if (lbl_mutasi_rate.getText().length() >= 2) {
-//            evt.consume();
-//        }
-    }//GEN-LAST:event_lbl_mutasi_rateKeyTyped
 
-    private void enable_button() {
-        btn_hasilprediksi.setEnabled(true);
-    }
+    }//GEN-LAST:event_TextFieldMutationRateKeyTyped
 
     private boolean check_parameter() {
         boolean flag;
 
-        if (lbl_jumpopulasi.getText().isEmpty() || lbl_jum_iterasi.getText().isEmpty() || lbl_crossover_rate.getText().isEmpty() || lbl_mutasi_rate.getText().isEmpty()) {
+        if (TextFieldJumPopulasi.getText().isEmpty() || TextFieldJumIterasi.getText().isEmpty() || TextFieldCrossoverRate.getText().isEmpty() || TextFieldMutationRate.getText().isEmpty()) {
             flag = true;
         } else {
             flag = false;
@@ -490,24 +519,88 @@ public class InterfaceTA extends javax.swing.JFrame {
 
     private void btn_hasilprediksiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hasilprediksiActionPerformed
         // TODO add your handling code here:
-        int pilihan = Metode.getSelectedIndex();
+        String[] hasil_prediksi;
+        int pilihan = ComboBox_metode.getSelectedIndex();
         NumberFormat format = NumberFormat.getInstance(Locale.GERMAN);
+        
         if (pilihan == 0) {
             System.out.println("Pilih Fuzzy Mamdani");
             interface_manager.do_fuzzy_mamdani();
+            hasil_prediksi = interface_manager.getHasilPrediksi();
+            
+            DefaultTableModel cuaca_model = (DefaultTableModel) tbl_datacuaca.getModel();
+
+            String[] data = new String[8];
+            for (int i = tbl_datacuaca.getRowCount() - 1; i >= 0; i--) {
+                cuaca_model.removeRow(i);
+            }
+
+            for (int i = 0; i < data_cuaca.size(); i++) {
+                data[0] = String.valueOf((int) data_cuaca.get(i).getNo());
+                data[1] = data_cuaca.get(i).getTanggal();
+                data[2] = String.valueOf(data_cuaca.get(i).getSuhu());
+                data[3] = String.valueOf(data_cuaca.get(i).getKelembaban());
+                data[4] = String.valueOf(data_cuaca.get(i).getTekananUdara());
+                data[5] = String.valueOf(data_cuaca.get(i).getKecepatanAngin());
+                data[6] = data_cuaca.get(i).getResult();
+                data[7] = hasil_prediksi[i];
+
+                cuaca_model.addRow(data);
+            }
+            
+            lbl_hasil_akurasi.setText(String.valueOf(interface_manager.getHasilAkurasi())+"%");
+            
         } else {
             System.out.println("Pilih Algen+Mamdani");
             if (check_parameter() == false) {
-                int jum_populasi = Integer.parseInt(lbl_jumpopulasi.getText());
-                int jum_iterasi = Integer.parseInt(lbl_jum_iterasi.getText());
-                double cr = Double.parseDouble(lbl_crossover_rate.getText());
-                double mr = Double.parseDouble(lbl_mutasi_rate.getText());
+                int jum_populasi = Integer.parseInt(TextFieldJumPopulasi.getText());
+                int jum_iterasi = Integer.parseInt(TextFieldJumIterasi.getText());
+                double cr = Double.parseDouble(TextFieldCrossoverRate.getText());
+                double mr = Double.parseDouble(TextFieldMutationRate.getText());
                 interface_manager.do_algenfuzzy(jum_iterasi, jum_populasi, cr, mr);
+                hasil_prediksi = interface_manager.getHasilPrediksiHybrid();
+            
+                DefaultTableModel cuaca_model = (DefaultTableModel) tbl_datacuaca.getModel();
+
+                String[] data = new String[8];
+                for (int i = tbl_datacuaca.getRowCount() - 1; i >= 0; i--) {
+                    cuaca_model.removeRow(i);
+                }
+
+                for (int i = 0; i < data_cuaca.size(); i++) {
+                    data[0] = String.valueOf((int) data_cuaca.get(i).getNo());
+                    data[1] = data_cuaca.get(i).getTanggal();
+                    data[2] = String.valueOf(data_cuaca.get(i).getSuhu());
+                    data[3] = String.valueOf(data_cuaca.get(i).getKelembaban());
+                    data[4] = String.valueOf(data_cuaca.get(i).getTekananUdara());
+                    data[5] = String.valueOf(data_cuaca.get(i).getKecepatanAngin());
+                    data[6] = data_cuaca.get(i).getResult();
+                    data[7] = hasil_prediksi[i];
+
+                    cuaca_model.addRow(data);
+                }
+
             } else {
-                JOptionPane.showMessageDialog(null, "Parameter not null", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Parameter Belum Diisi", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btn_hasilprediksiActionPerformed
+
+    private void ComboBox_metodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBox_metodeActionPerformed
+        int pilihan = ComboBox_metode.getSelectedIndex();
+            if (pilihan == 0) {
+                TextFieldJumPopulasi.setEnabled(false);
+                TextFieldJumIterasi.setEnabled(false);
+                TextFieldCrossoverRate.setEnabled(false);
+                TextFieldMutationRate.setEnabled(false);
+            }
+            else {
+                TextFieldJumPopulasi.setEnabled(true);
+                TextFieldJumIterasi.setEnabled(true);
+                TextFieldCrossoverRate.setEnabled(true);
+                TextFieldMutationRate.setEnabled(true);
+            }
+    }//GEN-LAST:event_ComboBox_metodeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -545,7 +638,12 @@ public class InterfaceTA extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Metode;
+    private javax.swing.JComboBox<String> ComboBox_metode;
+    private javax.swing.JTextField TextFieldCrossoverRate;
+    private javax.swing.JTextField TextFieldJumIterasi;
+    private javax.swing.JTextField TextFieldJumPopulasi;
+    private javax.swing.JTextField TextFieldMutationRate;
+    private javax.swing.JTextField TextField_folderPath;
     private javax.swing.JButton btn_hasilprediksi;
     private javax.swing.JButton btn_loadfile;
     private javax.swing.JLabel jLabel1;
@@ -556,23 +654,17 @@ public class InterfaceTA extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField lbl_crossover_rate;
-    private javax.swing.JTextField lbl_jum_iterasi;
-    private javax.swing.JTextField lbl_jumpopulasi;
-    private javax.swing.JTextField lbl_mutasi_rate;
+    private javax.swing.JLabel lbl_hasil_akurasi;
     private javax.swing.JTable tbl_datacuaca;
     // End of variables declaration//GEN-END:variables
 

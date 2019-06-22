@@ -21,6 +21,7 @@ public class CInterfaceManager {
     CHybridAlgen_Mamdani AM;
     CFuzzyMamdani fuzzy;
     String[] hasil_prediksi, hasil_prediksi_hybrid;
+    double hasil_akurasi, hasil_akurasi_hybrid;
     
     public CInterfaceManager() {
     }
@@ -94,6 +95,7 @@ public class CInterfaceManager {
         fuzzy.do_prediksi();
         fuzzy.hitung_akurasi();
         
+        hasil_akurasi = fuzzy.gethasil_akurasi();
         hasil_prediksi = fuzzy.gethasil_prediksi();
     }
     
@@ -129,5 +131,13 @@ public class CInterfaceManager {
     
     public String[] getHasilPrediksi(){
         return hasil_prediksi;
+    }
+    
+    public double getHasilAkurasi(){
+        return hasil_akurasi;
+    }
+    
+    public double getHasilAkurasiHybrid(){
+        return hasil_akurasi_hybrid;
     }
 }

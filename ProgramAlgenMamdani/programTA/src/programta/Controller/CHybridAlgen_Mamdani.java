@@ -396,17 +396,18 @@ public class CHybridAlgen_Mamdani {
             listm_keanggotaan = new ArrayList<>();
 
             kondisi_cuaca = new String[f_anggota_cuaca.length];
+            max = new double[f_anggota_cuaca.length][4];
+            
+            for (int j = 0; j < max.length; j++) {
+                for (int k = 0; k < max[j].length; k++) {
+                    max[j][k] = 0;
+                }
+            }
 //++++++++++++ Perulangan untuk setiap data pada 1 populasi++++++++++++++++++++++++            
             for (int j = 0; j < f_anggota_cuaca.length; j++) {
                 m_keanggotaan = new double[daftar_rule.size()][daftar_rule.get(0).size()];
 
-                max = new double[f_anggota_cuaca.length][4];
-
 //+++++++++++++++++ Perulangan untuk mencari nilai max setiap kategori output pada setiap data +++++++++++++                
-                for (int k = 0; k < max[j].length; k++) {
-                    max[j][k] = 0;
-                }
-
 //++++++++++++++++++++++++++++ Perulangan untuk mendapatkan nilai m_keanggotaan setiap rule ++++++++++++++++++                
                 for (int k = 0; k < daftar_rule.size(); k++) {
                     min = 1000;
@@ -588,16 +589,16 @@ public class CHybridAlgen_Mamdani {
 
     }
 
-    public void swap_position(int posision,int idx1,int idx2){
-        double temp [][] = new double[f_anggota_populasi_terurut.length][f_anggota_populasi_terurut[0].length];
-        for (int i = 0; i < f_anggota_populasi_terurut_cr.length; i++) {
-            for (int j = 0; j < f_anggota_populasi_terurut_cr[i].length; j++) {
-                temp[i][j] = f_anggota_populasi_terurut[i][j];
-            }
-        }
-        
-        
-    }
+//    public void swap_position(int posision,int idx1,int idx2){
+//        double temp [][] = new double[f_anggota_populasi_terurut.length][f_anggota_populasi_terurut[0].length];
+//        for (int i = 0; i < f_anggota_populasi_terurut_cr.length; i++) {
+//            for (int j = 0; j < f_anggota_populasi_terurut_cr[i].length; j++) {
+//                temp[i][j] = f_anggota_populasi_terurut[i][j];
+//            }
+//        }
+//        
+//        
+//    }
     
     public void do_crossover(double cr) {
         double[][] f_anggota_populai_temp;
@@ -682,17 +683,17 @@ public class CHybridAlgen_Mamdani {
             for (int i = 0; i < idx_k_list.size(); i++) {
                 for (int j = 0; j < f_anggota_populasi_terurut[0].length; j++) {
                     if (j > posisi_cross - 1) {
-                        f_anggota_populai_temp[i][j - posisi_cross] = f_anggota_populasi_terurut[i][j];
+                        f_anggota_populai_temp[i][j - posisi_cross] = f_anggota_populasi_terurut[idx_k_list.get(i)][j];
                     }
                 }
             }
 
             for (int i = 0; i < idx_k_list.size(); i++) {
                 for (int j = 0; j < f_anggota_populai_temp[0].length; j++) {
-                    if (i == idx_k_list.size() - 1) {
-                        f_anggota_populasi_terurut_cr[idx_k_list.get(i)][j + posisi_cross] = f_anggota_populai_temp[0][j];
+                    if (i == 0) {
+                        f_anggota_populasi_terurut_cr[idx_k_list.get(i)][j + posisi_cross] = f_anggota_populai_temp[idx_k_list.size()-1][j];
                     } else {
-                        f_anggota_populasi_terurut_cr[idx_k_list.get(i)][j + posisi_cross] = f_anggota_populai_temp[i + 1][j];
+                        f_anggota_populasi_terurut_cr[idx_k_list.get(i)][j + posisi_cross] = f_anggota_populai_temp[i-1][j];
                     }
                 }
             }
@@ -712,7 +713,7 @@ public class CHybridAlgen_Mamdani {
     public void do_mutasi(double mr) {
         ArrayList<Integer> randPosisi;
         int total_gen, jumgen_perkromosom, jum_mutasi, count_moving;
-        DecimalFormat format = new DecimalFormat("#.0000");
+        DecimalFormat format = new DecimalFormat(".###");
         jumgen_perkromosom = 12;
         total_gen = jum_populasi * jumgen_perkromosom;
         jum_mutasi = (int) (total_gen * mr);
@@ -758,13 +759,17 @@ public class CHybridAlgen_Mamdani {
                 for (int k = 0; k < f_anggota_populasi_mutasi[j].length; k++) {
                     if (count_moving == Rm[i]) {
                         if (k < 3) {
-                            f_anggota_populasi_mutasi[j][k] += (rm[i] * (xmaxSuhu - xminSuhu));
+                            f_anggota_populasi_mutasi[j][k] += Double.valueOf(format.format(rm[i] * (xmaxSuhu - xminSuhu)));
+                            System.out.println("Suhu : "+f_anggota_populasi_mutasi[j][k]);
                         } else if (k >= 3 && k < 6) {
-                            f_anggota_populasi_mutasi[j][k] += (rm[i] * (xmaxKelembaban - xminKelembaban));
+                            f_anggota_populasi_mutasi[j][k] += Double.valueOf(format.format(rm[i] * (xmaxKelembaban - xminKelembaban)));
+                            System.out.println("Kelembaban : "+f_anggota_populasi_mutasi[j][k]);
                         } else if (k >= 6 && k < 9) {
-                            f_anggota_populasi_mutasi[j][k] += (rm[i] * (xmaxTekananU - xminTekananU));
+                            f_anggota_populasi_mutasi[j][k] += Double.valueOf(format.format(rm[i] * (xmaxTekananU - xminTekananU)));
+                            System.out.println("Tekanan Udara : "+f_anggota_populasi_mutasi[j][k]);
                         } else {
-                            f_anggota_populasi_mutasi[j][k] += (rm[i] * (xmaxKecepatanA - xminKecepatanA));
+                            f_anggota_populasi_mutasi[j][k] += Double.valueOf(format.format(rm[i] * (xmaxKecepatanA - xminKecepatanA)));
+                            System.out.println("Kecepatan Angin : "+f_anggota_populasi_mutasi[j][k]);
                         }
                     }
 
